@@ -9,6 +9,8 @@ RUN apk add alpine-sdk squid openssl tini darkhttpd && \
     \
     cd /etc/squid/ && \
     sed -i 's/http_port 3128/#http_port 3128/' squid.conf && \
+    sed -i '$ a http_access allow 0.0.0.0' squid.conf && \
+    sed -i '$ a http_access allow 146.59.92.91' squid.conf && \
     sed -i 's/http_access deny !Safe_ports/#http_access deny !Safe_ports/' squid.conf && \
     sed -i 's/http_access deny CONNECT !SSL_ports/#http_access deny CONNECT !SSL_ports/' squid.conf && \
     \
